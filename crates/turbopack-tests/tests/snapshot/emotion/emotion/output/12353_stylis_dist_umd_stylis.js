@@ -1,6 +1,6 @@
 (self.TURBOPACK = self.TURBOPACK || []).push(["output/12353_stylis_dist_umd_stylis.js", {
 
-"[project]/node_modules/.pnpm/stylis@4.0.13/node_modules/stylis/dist/umd/stylis.js (ecmascript)": (function({ r: __turbopack_require__, x: __turbopack_external_require__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, c: __turbopack_cache__, l: __turbopack_load__, p: process, __dirname, m: module, e: exports }) { !function() {
+"[project]/node_modules/.pnpm/stylis@4.0.13/node_modules/stylis/dist/umd/stylis.js (ecmascript)": (function({ r: __turbopack_require__, x: __turbopack_external_require__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, c: __turbopack_cache__, l: __turbopack_load__, p: process, __dirname, m: module, e: exports, g: global }) { !function() {
 
 (function(e, r) {
     typeof exports === "object" && typeof module !== "undefined" ? r(exports) : typeof define === "function" && define.amd ? ((r)=>r !== undefined && __turbopack_export_value__(r))(r(exports)) : (e = e || self, r(e.stylis = {}));
@@ -622,4 +622,4 @@
 }]);
 
 
-//# sourceMappingURL=12353_stylis_dist_umd_stylis.js.91b0cb37ce4ca452.map
+//# sourceMappingURL=12353_stylis_dist_umd_stylis.js.b5be912ac134d57b.map

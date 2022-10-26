@@ -2,13 +2,13 @@
 
 "[project]/crates/turbopack-tests/tests/snapshot/env/env/input/.env/.env.js": (({ r: __turbopack_require__, x: __turbopack_external_require__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, c: __turbopack_cache__, l: __turbopack_load__, p: process, __dirname }) => (() => {
 
-const env = process.env;
+const env = process.env = {...process.env};
 
-env["FOO"] = "foo";
-env["FOOBAR"] = "foobar";
+env["FOO"] = foo;
+env["FOOBAR"] = foobar;
 
 })()),
-"[project]/crates/turbopack-tests/tests/snapshot/env/env/input/index.js (ecmascript)": (function({ r: __turbopack_require__, x: __turbopack_external_require__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, c: __turbopack_cache__, l: __turbopack_load__, p: process, __dirname, m: module, e: exports }) { !function() {
+"[project]/crates/turbopack-tests/tests/snapshot/env/env/input/index.js (ecmascript)": (function({ r: __turbopack_require__, x: __turbopack_external_require__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, c: __turbopack_cache__, l: __turbopack_load__, p: process, __dirname, m: module, e: exports, g: global }) { !function() {
 
 console.log(process.env.FOOBAR);
 
@@ -389,6 +389,7 @@ instantiateRuntimeModule("[project]/crates/turbopack-tests/tests/snapshot/env/en
         l: loadChunk,
         p: _process,
         __dirname: module.id.replace(/(^|\/)[\/]+$/, ""),
+        g: globalThis,
       });
     });
 
@@ -1022,4 +1023,4 @@ instantiateRuntimeModule("[project]/crates/turbopack-tests/tests/snapshot/env/en
 })();
 
 
-//# sourceMappingURL=crates_turbopack-tests_tests_snapshot_env_env_input_480486.js.5ca23c99107d77f5.map
+//# sourceMappingURL=crates_turbopack-tests_tests_snapshot_env_env_input_480486.js.7240e342ae23ba16.map

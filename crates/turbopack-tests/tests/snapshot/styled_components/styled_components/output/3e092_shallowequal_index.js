@@ -1,6 +1,6 @@
 (self.TURBOPACK = self.TURBOPACK || []).push(["output/3e092_shallowequal_index.js", {
 
-"[project]/node_modules/.pnpm/shallowequal@1.1.0/node_modules/shallowequal/index.js (ecmascript)": (function({ r: __turbopack_require__, x: __turbopack_external_require__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, c: __turbopack_cache__, l: __turbopack_load__, p: process, __dirname, m: module, e: exports }) { !function() {
+"[project]/node_modules/.pnpm/shallowequal@1.1.0/node_modules/shallowequal/index.js (ecmascript)": (function({ r: __turbopack_require__, x: __turbopack_external_require__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, c: __turbopack_cache__, l: __turbopack_load__, p: process, __dirname, m: module, e: exports, g: global }) { !function() {
 
 module.exports = function shallowEqual(objA, objB, compare, compareContext) {
     var ret = compare ? compare.call(compareContext, objA, objB) : void 0;
@@ -38,4 +38,4 @@ module.exports = function shallowEqual(objA, objB, compare, compareContext) {
 }]);
 
 
-//# sourceMappingURL=3e092_shallowequal_index.js.f31138c2ae294986.map
+//# sourceMappingURL=3e092_shallowequal_index.js.b3b787df0ecac6ca.map

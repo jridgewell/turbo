@@ -1,6 +1,6 @@
 (self.TURBOPACK = self.TURBOPACK || []).push(["output/2b6df_@babel_runtime_helpers_extends.js", {
 
-"[project]/node_modules/.pnpm/@babel+runtime@7.18.9/node_modules/@babel/runtime/helpers/extends.js (ecmascript)": (function({ r: __turbopack_require__, x: __turbopack_external_require__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, c: __turbopack_cache__, l: __turbopack_load__, p: process, __dirname, m: module, e: exports }) { !function() {
+"[project]/node_modules/.pnpm/@babel+runtime@7.18.9/node_modules/@babel/runtime/helpers/extends.js (ecmascript)": (function({ r: __turbopack_require__, x: __turbopack_external_require__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, c: __turbopack_cache__, l: __turbopack_load__, p: process, __dirname, m: module, e: exports, g: global }) { !function() {
 
 function _extends() {
     module.exports = _extends = Object.assign ? Object.assign.bind() : function(target) {
@@ -22,4 +22,4 @@ module.exports = _extends, module.exports.__esModule = true, module.exports["def
 }]);
 
 
-//# sourceMappingURL=2b6df_@babel_runtime_helpers_extends.js.3a0fac537faf33b2.map
+//# sourceMappingURL=2b6df_@babel_runtime_helpers_extends.js.9e4dab49aa208160.map

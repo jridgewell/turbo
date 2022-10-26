@@ -1,6 +1,6 @@
 (self.TURBOPACK = self.TURBOPACK || []).push(["output/05161_hoist-non-react-statics_dist_hoist-non-react-statics.cjs.js", {
 
-"[project]/node_modules/.pnpm/hoist-non-react-statics@3.3.2/node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js (ecmascript)": (function({ r: __turbopack_require__, x: __turbopack_external_require__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, c: __turbopack_cache__, l: __turbopack_load__, p: process, __dirname, m: module, e: exports }) { !function() {
+"[project]/node_modules/.pnpm/hoist-non-react-statics@3.3.2/node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js (ecmascript)": (function({ r: __turbopack_require__, x: __turbopack_external_require__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, c: __turbopack_cache__, l: __turbopack_load__, p: process, __dirname, m: module, e: exports, g: global }) { !function() {
 
 'use strict';
 var reactIs = __turbopack_require__("[project]/node_modules/.pnpm/react-is@16.13.1/node_modules/react-is/index.js (ecmascript)");
@@ -88,4 +88,4 @@ module.exports = hoistNonReactStatics;
 }]);
 
 
-//# sourceMappingURL=05161_hoist-non-react-statics_dist_hoist-non-react-statics.cjs.js.16ec6995fb521e87.map
+//# sourceMappingURL=05161_hoist-non-react-statics_dist_hoist-non-react-statics.cjs.js.d0ada7a97451fed5.map

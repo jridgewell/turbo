@@ -1,6 +1,6 @@
 (self.TURBOPACK = self.TURBOPACK || []).push(["output/13a8f_turbopack-tests_tests_snapshot_imports_resolve_error_cjs_input_index_223f2e.js", {
 
-"[project]/crates/turbopack-tests/tests/snapshot/imports/resolve_error_cjs/input/index.js (ecmascript)": (function({ r: __turbopack_require__, x: __turbopack_external_require__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, c: __turbopack_cache__, l: __turbopack_load__, p: process, __dirname, m: module, e: exports }) { !function() {
+"[project]/crates/turbopack-tests/tests/snapshot/imports/resolve_error_cjs/input/index.js (ecmascript)": (function({ r: __turbopack_require__, x: __turbopack_external_require__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, c: __turbopack_cache__, l: __turbopack_load__, p: process, __dirname, m: module, e: exports, g: global }) { !function() {
 
 const dne = __turbopack_require__((()=>{
     const e = new Error("Cannot find module 'does-not-exist/path'");
@@ -385,6 +385,7 @@ console.log(dne);
         l: loadChunk,
         p: _process,
         __dirname: module.id.replace(/(^|\/)[\/]+$/, ""),
+        g: globalThis,
       });
     });
 
@@ -1018,4 +1019,4 @@ console.log(dne);
 })();
 
 
-//# sourceMappingURL=13a8f_turbopack-tests_tests_snapshot_imports_resolve_error_cjs_input_index_223f2e.js.0564bb6c921d5c04.map
+//# sourceMappingURL=13a8f_turbopack-tests_tests_snapshot_imports_resolve_error_cjs_input_index_223f2e.js.ece5d94021ddb02e.map

@@ -1,6 +1,6 @@
 (self.TURBOPACK = self.TURBOPACK || []).push(["output/crates_turbopack-tests_tests_snapshot_basic_async_chunk_input_index_9be35c.js", {
 
-"[project]/crates/turbopack-tests/tests/snapshot/basic/async_chunk/input/index.js (ecmascript)": (function({ r: __turbopack_require__, x: __turbopack_external_require__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, c: __turbopack_cache__, l: __turbopack_load__, p: process, __dirname, m: module, e: exports }) { !function() {
+"[project]/crates/turbopack-tests/tests/snapshot/basic/async_chunk/input/index.js (ecmascript)": (function({ r: __turbopack_require__, x: __turbopack_external_require__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, c: __turbopack_cache__, l: __turbopack_load__, p: process, __dirname, m: module, e: exports, g: global }) { !function() {
 
 __turbopack_require__("[project]/crates/turbopack-tests/tests/snapshot/basic/async_chunk/input/import.js/manifest-loader.js")(__turbopack_import__).then(({ foo  })=>{
     foo(true);
@@ -391,6 +391,7 @@ __turbopack_export_value__((__turbopack_import__) => {
         l: loadChunk,
         p: _process,
         __dirname: module.id.replace(/(^|\/)[\/]+$/, ""),
+        g: globalThis,
       });
     });
 
@@ -1024,4 +1025,4 @@ __turbopack_export_value__((__turbopack_import__) => {
 })();
 
 
-//# sourceMappingURL=crates_turbopack-tests_tests_snapshot_basic_async_chunk_input_index_9be35c.js.cd4f2d1f6d4fa4b4.map
+//# sourceMappingURL=crates_turbopack-tests_tests_snapshot_basic_async_chunk_input_index_9be35c.js.31696bba0dae2301.map
