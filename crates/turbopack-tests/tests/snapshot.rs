@@ -33,6 +33,7 @@ use turbopack_core::{
     chunk::{dev::DevChunkingContextVc, ChunkableAssetVc},
     context::AssetContextVc,
     environment::{BrowserEnvironment, EnvironmentIntention, EnvironmentVc, ExecutionEnvironment},
+    issue::IssueVc,
     reference::all_referenced_assets,
     source_asset::SourceAssetVc,
 };
@@ -187,6 +188,7 @@ async fn run(resource: &'static str) -> Result<()> {
             .map(|p| context.process(SourceAssetVc::new(p).into()));
 
         let chunks = modules
+            .clone()
             .map(|module| async move {
                 if let Some(ecmascript) = EcmascriptModuleAssetVc::resolve_from(module).await? {
                     // TODO: Load runtime entries from snapshots
@@ -224,6 +226,16 @@ async fn run(resource: &'static str) -> Result<()> {
                 println!("removed file {}", path);
             } else {
                 panic!("expected file {}, but it was not emitted", path);
+            }
+        }
+
+        for m in modules {
+            let issues = IssueVc::peek_issues_with_path(m).await?.await?;
+            if !issues.is_empty() {
+                for issue in issues.iter() {
+                    dbg!(issue.into_plain().await?);
+                }
+                panic!("found issues");
             }
         }
 

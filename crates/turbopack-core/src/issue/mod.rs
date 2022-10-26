@@ -3,7 +3,13 @@ pub mod code_gen;
 pub mod package_json;
 pub mod resolve;
 
-use std::{cmp::Ordering, collections::HashSet, fmt::Display, future::IntoFuture, sync::Arc};
+use std::{
+    cmp::Ordering,
+    collections::HashSet,
+    fmt::{Display, Formatter},
+    future::IntoFuture,
+    sync::Arc,
+};
 
 use anyhow::Result;
 use futures::FutureExt;
@@ -66,7 +72,7 @@ impl IssueSeverity {
 }
 
 impl Display for IssueSeverity {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         f.write_str(self.as_str())
     }
 }
@@ -432,7 +438,7 @@ impl IssueSourceVc {
 pub struct OptionIssueSource(Option<IssueSourceVc>);
 
 #[turbo_tasks::value(serialization = "none")]
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct PlainIssue {
     pub severity: IssueSeverity,
     pub context: String,
@@ -483,7 +489,7 @@ impl IssueVc {
 }
 
 #[turbo_tasks::value(serialization = "none")]
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct PlainIssueSource {
     pub asset: PlainAssetReadRef,
     pub start: SourcePos,
@@ -505,7 +511,7 @@ impl IssueSourceVc {
 }
 
 #[turbo_tasks::value(serialization = "none")]
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct PlainAsset {
     pub path: FileSystemPathReadRef,
     pub content: FileContentReadRef,

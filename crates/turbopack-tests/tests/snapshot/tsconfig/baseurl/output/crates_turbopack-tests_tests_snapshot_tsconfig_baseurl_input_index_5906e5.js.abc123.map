@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["/[project]/crates/turbopack-tests/tests/snapshot/tsconfig/baseurl/input/index.js"],"sourcesContent":["import { a } from \"./a.js\";\nimport { b } from \"bar/b.js\";\nconsole.log({ a, b });\n"],"names":[],"mappings":"AAAA;;;;;;;;;AAEA,QAAQ,GAAG,CAAC;IAAE;IAAG,CAAC;AAAC"}},
+    {"offset": {"line": 17, "column": 0}, "map": {"version": 3, "names": [], "sources": [], "mappings": "A"}},
+    {"offset": {"line": 21, "column": 0}, "map": {"version":3,"sources":["/[project]/crates/turbopack-tests/tests/snapshot/tsconfig/baseurl/input/foo/bar/b.js"],"sourcesContent":["export const b = \"b\";\n"],"names":[],"mappings":"AAAA;;;AAAO,MAAM,IAAI"}},
+    {"offset": {"line": 25, "column": 0}, "map": {"version": 3, "names": [], "sources": [], "mappings": "A"}}]
+}
