@@ -5443,6 +5443,7 @@ dependencies = [
  "turbo-tasks-memory",
  "turbopack",
  "turbopack-core",
+ "turbopack-ecmascript",
  "turbopack-env",
 ]
 
