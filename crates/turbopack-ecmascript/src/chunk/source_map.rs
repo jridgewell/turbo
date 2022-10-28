@@ -44,7 +44,7 @@ impl Asset for EcmascriptChunkSourceMapAsset {
             .generate_source_map()
             .to_bytes()
             .await?;
-        Ok(File::from(sm.as_slice()).into())
+        Ok(File::from(sm).into())
     }
 
     #[turbo_tasks::function]
@@ -86,7 +86,7 @@ impl Asset for EcmascriptChunkEntrySourceMapAsset {
     #[turbo_tasks::function]
     async fn content(&self) -> Result<AssetContentVc> {
         let sm = self.code.generate_source_map().to_bytes().await?;
-        Ok(File::from(sm.as_slice()).into())
+        Ok(File::from(sm).into())
     }
 
     #[turbo_tasks::function]
