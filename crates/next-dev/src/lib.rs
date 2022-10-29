@@ -266,7 +266,8 @@ async fn source(
     }
     .cell()
     .into();
-    let source_map_trace = NextSourceMapTraceContentSourceVc::new(rendered_source).into();
+    let source_map_trace =
+        NextSourceMapTraceContentSourceVc::new(rendered_source, project_path).into();
     let source = RouterContentSource {
         routes: vec![
             ("__turbopack__/".to_string(), introspect),

@@ -379,12 +379,13 @@ async fn trace_stack(
     intermediate_asset: AssetVc,
     intermediate_output_path: FileSystemPathVc,
 ) -> Result<String> {
-    let root = match to_sys_path(intermediate_output_path.root()).await? {
+    let root = intermediate_output_path.root();
+    let root_str = match to_sys_path(root).await? {
         Some(r) => r.to_string_lossy().to_string(),
         None => bail!("couldn't extract disk fs from path"),
     };
 
-    let assets = internal_assets(intermediate_asset, intermediate_output_path.root())
+    let assets = internal_assets(intermediate_asset, root)
         .await?
         .iter()
         .map(|a| async {
@@ -398,7 +399,7 @@ async fn trace_stack(
                 None => PathBuf::from(&a.path().await?.path),
             };
 
-            let p = path.strip_prefix(&root).unwrap();
+            let p = path.strip_prefix(&root_str).unwrap();
             Ok(Some((
                 p.to_str().unwrap().to_string(),
                 gen.generate_source_map(),
@@ -428,13 +429,19 @@ async fn trace_stack(
 
     for frame in &error.stack {
         if let Some((line, column)) = frame.get_pos() {
-            if let Some(path) = frame.file.strip_prefix(&root) {
+            if let Some(path) = frame.file.strip_prefix(&root_str) {
                 if let Some(map) = assets.get(path) {
-                    let trace = SourceMapTraceVc::new(*map, line, column, frame.name.clone())
-                        .trace()
-                        .await?;
+                    dbg!(&path);
+                    let trace = SourceMapTraceVc::new(
+                        *map,
+                        root.join(path),
+                        line,
+                        column,
+                        frame.name.clone(),
+                    )
+                    .trace()
+                    .await?;
                     if let TraceResult::Found(f) = &*trace {
-                        write_frame!(f, f.file)?;
                         continue;
                     }
                 }

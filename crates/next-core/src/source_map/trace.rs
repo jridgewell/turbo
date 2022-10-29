@@ -1,10 +1,11 @@
 use anyhow::Result;
 use serde_json::json;
-use turbo_tasks_fs::File;
+use turbo_tasks_fs::{File, FileSystemPathVc};
 use turbopack_core::{
     asset::AssetContentVc,
     source_map::{SourceMapVc, Token},
 };
+use url::Url;
 
 /// An individual stack frame, as parsed by the stacktrace-parser npm module.
 ///
@@ -35,6 +36,7 @@ impl StackFrame {
 #[derive(Debug)]
 pub struct SourceMapTrace {
     map: SourceMapVc,
+    map_path: FileSystemPathVc,
     line: usize,
     column: usize,
     name: Option<String>,
@@ -51,9 +53,16 @@ pub enum TraceResult {
 #[turbo_tasks::value_impl]
 impl SourceMapTraceVc {
     #[turbo_tasks::function]
-    pub async fn new(map: SourceMapVc, line: usize, column: usize, name: Option<String>) -> Self {
+    pub async fn new(
+        map: SourceMapVc,
+        map_path: FileSystemPathVc,
+        line: usize,
+        column: usize,
+        name: Option<String>,
+    ) -> Self {
         SourceMapTrace {
             map,
+            map_path,
             line,
             column,
             name,
@@ -80,12 +89,16 @@ impl SourceMapTraceVc {
             .lookup_token(this.line.saturating_sub(1), this.column)
             .await?;
         let result = match &*token {
-            Some(Token::Original(t)) => TraceResult::Found(StackFrame {
-                file: t.original_file.clone(),
-                line: Some(t.original_line.saturating_add(1)),
-                column: Some(t.original_column),
-                name: t.name.clone().or_else(|| this.name.clone()),
-            }),
+            Some(Token::Original(t)) => {
+                let map_path = this.map_path.await?;
+                let file = resolve_source(&map_path.path, &t.original_file);
+                TraceResult::Found(StackFrame {
+                    file,
+                    line: Some(t.original_line.saturating_add(1)),
+                    column: Some(t.original_column),
+                    name: t.name.clone().or_else(|| this.name.clone()),
+                })
+            }
             _ => TraceResult::NotFound,
         };
 
@@ -109,4 +122,23 @@ impl SourceMapTraceVc {
         };
         Ok(File::from(result).into())
     }
+}
+
+/// A basic source map source resolver, to make the source relative to the path
+/// of the map file.
+fn resolve_source(base: &str, source: &str) -> String {
+    // TODO: Handle source roots, but we don't have any yet.
+    if let Ok(url) = Url::parse(source) {
+        return url.to_string();
+    }
+
+    if source.starts_with('/') {
+        return source.to_string();
+    }
+
+    let base = match base.rfind('/') {
+        Some(i) => &base[..=i],
+        None => "/",
+    };
+    base.to_string() + source
 }

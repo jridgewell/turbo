@@ -2,6 +2,7 @@ use std::collections::HashSet;
 
 use anyhow::Result;
 use turbo_tasks::{primitives::StringVc, Value};
+use turbo_tasks_fs::FileSystemPathVc;
 use turbopack_core::{
     introspect::{Introspectable, IntrospectableChildrenVc, IntrospectableVc},
     source_map::GenerateSourceMapVc,
@@ -19,13 +20,17 @@ use super::{SourceMapTraceVc, StackFrame};
 #[turbo_tasks::value(shared)]
 pub struct NextSourceMapTraceContentSource {
     asset_source: ContentSourceVc,
+    root: FileSystemPathVc,
 }
 
 #[turbo_tasks::value_impl]
 impl NextSourceMapTraceContentSourceVc {
     #[turbo_tasks::function]
-    pub fn new(asset_source: ContentSourceVc) -> NextSourceMapTraceContentSourceVc {
-        NextSourceMapTraceContentSource { asset_source }.cell()
+    pub fn new(
+        asset_source: ContentSourceVc,
+        root: FileSystemPathVc,
+    ) -> NextSourceMapTraceContentSourceVc {
+        NextSourceMapTraceContentSource { asset_source, root }.cell()
     }
 }
 
@@ -93,7 +98,13 @@ impl ContentSource for NextSourceMapTraceContentSource {
             _ => return Ok(ContentSourceResult::NotFound.cell()),
         };
 
-        let traced = SourceMapTraceVc::new(gen.generate_source_map(), line, column, frame.name);
+        let traced = SourceMapTraceVc::new(
+            gen.generate_source_map(),
+            this.root.join(path),
+            line,
+            column,
+            frame.name,
+        );
         Ok(ContentSourceResult::Static(traced.content().into()).cell())
     }
 }
